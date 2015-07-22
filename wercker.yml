@@ -26,4 +26,4 @@ build:
         code: |
           sudo yum install -y qt qt-devel
           sudo yum install -y subversion-devel
-          qmake && make
+          qmake-qt4 && make
