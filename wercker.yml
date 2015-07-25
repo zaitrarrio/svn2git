@@ -20,8 +20,10 @@ build:
           qmake-qt4 && make
 deploy:
     steps:
-    - mkdir dist
-    - cp svn-all-fast-export dist/
+    - script:
+        code: |
+          mkdir dist
+          cp svn-all-fast-export dist
     - s3sync:
         source_dir: dist/
         delete-removed: true
