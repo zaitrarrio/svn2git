@@ -22,7 +22,7 @@ deploy:
     steps:
     - script:
         code: |
-          sudo yum install -y wget tar
+          sudo yum install -y wget tar bzip2
           wget -nv https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
           bash miniconda.sh -b -p $HOME/miniconda
           export PATH="$HOME/miniconda/bin:$PATH"
