@@ -27,6 +27,7 @@ build:
           sudo yum install -y qt qt-devel
           sudo yum install -y subversion-devel
           sudo yum install -y git
+          sudo yum install -y python python-lib
           sudo yum groupinstall -y "Development Tools"
           qmake-qt4 && make
 deploy:
