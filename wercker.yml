@@ -29,3 +29,9 @@ build:
           sudo yum install -y git
           sudo yum groupinstall -y "Development Tools"
           qmake-qt4 && make
+deploy:
+    steps:
+    - s3sync:
+        bucket-url: $AWS_BUCKET_URL
+        key-id: $AWS_ACCESS_KEY_ID
+        key-secret: $AWS_SECRET_ACCESS_KEY
