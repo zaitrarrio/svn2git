@@ -1,0 +1,9 @@
+
+install:
+  - sudo yum install -y qt qt-devel
+  - sudo yum install -y subversion-devel
+  - sudo yum install -y git
+  - sudo yum groupinstall -y "Development Tools"
+  
+script:
+  - qmake-qt4 && make
