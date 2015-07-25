@@ -14,7 +14,11 @@ build:
     - script:
         name: install and build
         code: |
-          sudo yum clean all; sudo yum install -y qt qt-devel subversion-devel git ; sudo yum groupinstall -y 'Development Tools' ; sudo yum clean all
+          sudo yum clean all
+          sudo yum check
+          sudo yum install -y qt qt-devel subversion-devel git 
+          sudo yum groupinstall -y 'Development Tools'
+          sudo yum clean all
           qmake-qt4 && make
 deploy:
     steps:
