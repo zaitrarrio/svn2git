@@ -1,7 +1,7 @@
 
 # Read more about containers on our dev center
 # http://devcenter.wercker.com/docs/containers/index.html
-box: serebrov/centos-python2.7-java
+box: centos7
  
 # This is the build pipeline. Pipelines are the core of wercker
 # Read more about pipelines on our dev center
