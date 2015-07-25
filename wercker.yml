@@ -13,7 +13,7 @@ build:
   steps:
     - script:
         name: install and build
-        code: 
+        code: |
           sudo yum clean all
           sudo yum install -y qt qt-devel subversion-devel git 
           sudo yum clean all
