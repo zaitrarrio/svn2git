@@ -1,7 +1,7 @@
 
 # Read more about containers on our dev center
 # http://devcenter.wercker.com/docs/containers/index.html
-box: tianon/centos:6.3
+box: tianon/centos:5
 
 # This is the build pipeline. Pipelines are the core of wercker
 # Read more about pipelines on our dev center
@@ -14,7 +14,6 @@ build:
     - script:
         name: install and build
         code: |
-          sudo yum update -y
           sudo yum install -y qt qt-devel subversion-devel git 
           sudo yum groupinstall -y 'Development Tools'
           sudo yum clean all
