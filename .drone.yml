@@ -1,0 +1,9 @@
+
+image: centos:6
+
+script:
+  - sudo yum install -y qt qt-devel
+  - sudo yum install -y subversion-devel
+  - sudo yum install -y git
+  - sudo yum groupinstall -y "Development Tools"
+  - qmake-qt4 && make
