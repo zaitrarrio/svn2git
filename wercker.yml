@@ -14,7 +14,7 @@ build:
     - script:
         name: install and build
         code: |
-          sudo yum install -y qt qt-devel subversion-devel git wget
+          sudo yum install -y qt qt-devel subversion-devel git wget tar
           sudo yum groupinstall -y 'Development Tools'
           sudo yum clean all
           qmake-qt4 && make
