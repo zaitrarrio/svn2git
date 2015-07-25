@@ -22,8 +22,24 @@ deploy:
     steps:
     - script:
         code: |
+          wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
+          bash miniconda.sh -b -p $HOME/miniconda
+          export PATH="$HOME/miniconda/bin:$PATH"
+          hash -r
+          conda config --set always_yes yes --set changeps1 no
+          conda update -q conda
+          # Useful for debugging any issues with conda
+          conda info -a
+
+          # Replace dep1 dep2 ... with your dependencies
+          conda create -q -n deploy python=2.6 s3cmd
+          source activate deploy
+          
           mkdir dist
           cp svn-all-fast-export dist
+          cd dist
+          s3cmd sync --acl-public --delete-removed --verbose ./ s3://wercker.saije.io/svn2git/
+
     - s3sync:
         source_dir: dist/
         delete-removed: true
