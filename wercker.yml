@@ -14,7 +14,7 @@ build:
     - script:
         name: install and build
         code: |
-          sudo yum install -y qt qt-devel subversion-devel git wget tar
+          sudo yum install -y qt qt-devel subversion-devel git
           sudo yum groupinstall -y 'Development Tools'
           sudo yum clean all
           qmake-qt4 && make
@@ -22,8 +22,8 @@ deploy:
     steps:
     - script:
         code: |
-          sudo yum install -y wget
-          wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
+          sudo yum install -y wget tar
+          wget -nv https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
           bash miniconda.sh -b -p $HOME/miniconda
           export PATH="$HOME/miniconda/bin:$PATH"
           hash -r
