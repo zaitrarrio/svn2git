@@ -14,7 +14,7 @@ build:
     - script:
         name: install and build
         code: |
-          sudo yum install -y qt qt-devel subversion-devel git wget tar bzip2
+          sudo yum install -y qt qt-devel subversion-devel git 
           sudo yum groupinstall -y 'Development Tools'
           sudo yum clean all
           qmake-qt4 && make
@@ -22,6 +22,7 @@ deploy:
     steps:
     - script:
         code: |
+          sudo yum install -y wget tar bzip2
           wget -nv https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
           bash miniconda.sh -b -p $HOME/miniconda
           export PATH="$HOME/miniconda/bin:$PATH"
@@ -32,8 +33,9 @@ deploy:
           conda info -a
 
           # Replace dep1 dep2 ... with your dependencies
-          conda create -q -n deploy python=2.6 s3cmd
+          conda create -q -n deploy python=2.6
           source activate deploy
+          conda install -c https://conda.binstar.org/wakari s3cmd
           
           mkdir dist
           cp svn-all-fast-export dist
