@@ -28,14 +28,15 @@ deploy:
           export PATH="$HOME/miniconda/bin:$PATH"
           hash -r
           conda config --set always_yes yes --set changeps1 no
+          conda config --add channels https://conda.binstar.org/binstar
           conda update -q conda
           # Useful for debugging any issues with conda
           conda info -a
 
           # Replace dep1 dep2 ... with your dependencies
-          conda create -q -n deploy python=2.6
+          conda create -q -n deploy python=2.7
           source activate deploy
-          conda install -c https://conda.binstar.org/binstar s3cmd
+          conda install s3cmd
           
           mkdir dist
           cp svn-all-fast-export dist
