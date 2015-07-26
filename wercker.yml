@@ -35,7 +35,7 @@ deploy:
           # Replace dep1 dep2 ... with your dependencies
           conda create -q -n deploy python=2.6
           source activate deploy
-          conda install -c https://conda.binstar.org/wakari s3cmd
+          conda install -c https://conda.binstar.org/binstar s3cmd
           
           mkdir dist
           cp svn-all-fast-export dist
