@@ -42,8 +42,8 @@ deploy:
           cp svn-all-fast-export dist
           cd dist
           echo "[default]" > ~/.s3cfg
-          echo "access_key = AKIAJPYG4BCDH3MXDNJA" >> ~/.s3cfg
-          echo "secret_token = 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" >> ~/.s3cfg
+          echo "access_key=$AWS_ACCESS_KEY_ID" >> ~/.s3cfg
+          echo "secret_token=$AWS_SECRET_ACCESS_KEY" >> ~/.s3cfg
           s3cmd sync --acl-public --delete-removed --verbose ./ s3://wercker.saije.io/svn2git/
 
     - s3sync:
